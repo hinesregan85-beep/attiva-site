@@ -2,9 +2,6 @@
 <html lang="en-NZ">
 <head>
 <meta charset="utf-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=e8f66742-04f0-4f40-b35d-8f43cffde5e6
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>attiva.</title>
 <meta name="description" content="attiva. sets up the software, the workflow and the AI so an advice firm runs on one connected system.">
@@ -16,6 +13,7 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -98,28 +96,43 @@
         <svg viewBox="0 0 640 640" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg">
           <title id="diagram-title">One connected system</title>
           <desc id="diagram-desc">A CRM sits in the centre. Four tools are joined to it by solid lines: Gmail for email, monday.com for tasks and workflow, box.com for files, and Claude for AI.</desc>
-          <line class="link" x1="320" y1="92" x2="320" y2="250"/>
-          <line class="link" x1="320" y1="390" x2="320" y2="548"/>
-          <line class="link" x1="200" y1="320" x2="250" y2="320"/>
-          <line class="link" x1="390" y1="320" x2="440" y2="320"/>
-          <circle class="hub" cx="320" cy="320" r="70"/>
-          <text class="hub-text" x="320" y="334">CRM</text>
+          <g class="links">
+            <line class="link link-1" pathLength="1" x1="320" y1="250" x2="320" y2="92"/>
+            <line class="link link-2" pathLength="1" x1="390" y1="320" x2="440" y2="320"/>
+            <line class="link link-3" pathLength="1" x1="320" y1="390" x2="320" y2="548"/>
+            <line class="link link-4" pathLength="1" x1="250" y1="320" x2="200" y2="320"/>
+          </g>
+          <g class="flows" aria-hidden="true">
+            <line class="flow" pathLength="1" x1="320" y1="250" x2="320" y2="92"/>
+            <line class="flow" pathLength="1" x1="390" y1="320" x2="440" y2="320"/>
+            <line class="flow" pathLength="1" x1="320" y1="390" x2="320" y2="548"/>
+            <line class="flow" pathLength="1" x1="250" y1="320" x2="200" y2="320"/>
+          </g>
+          <g class="hub-group">
+            <circle class="hub" cx="320" cy="320" r="70"/>
+            <text class="hub-text" x="320" y="334">CRM</text>
+          </g>
 
-          <rect class="tool-box" x="220" y="8" width="200" height="84" rx="4"/>
-          <text class="tool-name" x="320" y="46">Gmail</text>
-          <text class="tool-role" x="320" y="72">Email</text>
-
-          <rect class="tool-box" x="440" y="278" width="196" height="84" rx="4"/>
-          <text class="tool-name" x="538" y="316">monday.com</text>
-          <text class="tool-role" x="538" y="342">Tasks and workflow</text>
-
-          <rect class="tool-box" x="220" y="548" width="200" height="84" rx="4"/>
-          <text class="tool-name" x="320" y="586">box.com</text>
-          <text class="tool-role" x="320" y="612">Files</text>
-
-          <rect class="tool-box" x="4" y="278" width="196" height="84" rx="4"/>
-          <text class="tool-name" x="102" y="316">Claude</text>
-          <text class="tool-role" x="102" y="342">AI</text>
+          <g class="tool tool-1">
+            <rect class="tool-box" x="220" y="8" width="200" height="84" rx="4"/>
+            <text class="tool-name" x="320" y="46">Gmail</text>
+            <text class="tool-role" x="320" y="72">Email</text>
+          </g>
+          <g class="tool tool-2">
+            <rect class="tool-box" x="440" y="278" width="196" height="84" rx="4"/>
+            <text class="tool-name" x="538" y="316">monday.com</text>
+            <text class="tool-role" x="538" y="342">Tasks and workflow</text>
+          </g>
+          <g class="tool tool-3">
+            <rect class="tool-box" x="220" y="548" width="200" height="84" rx="4"/>
+            <text class="tool-name" x="320" y="586">box.com</text>
+            <text class="tool-role" x="320" y="612">Files</text>
+          </g>
+          <g class="tool tool-4">
+            <rect class="tool-box" x="4" y="278" width="196" height="84" rx="4"/>
+            <text class="tool-name" x="102" y="316">Claude</text>
+            <text class="tool-role" x="102" y="342">AI</text>
+          </g>
         </svg>
       </figure>
 
@@ -182,11 +195,13 @@
         <h2 id="people-title">People.</h2>
       </div>
       <div class="cards is-two">
-        <article class="card">
+        <article class="card person">
+          <img class="portrait" src="images/graham-duston.jpg" alt="Graham Duston" width="422" height="422" loading="lazy">
           <h3>Graham Duston.</h3>
           <p>Graham has more than 35 years in investment management and financial services. He led Funds Administration NZ (FANZ) for more than 20 years. His roles have included CEO of SBS Wealth and the Lifestages KiwiSaver Scheme, General Manager New Zealand for ANZ Funds Management and ANZ Life, and senior management roles at Tower Trust Services and Armstrong Jones. He holds a Bachelor of Commerce in Economics and Management and a Postgraduate Diploma in Management from the University of Otago.</p>
         </article>
-        <article class="card">
+        <article class="card person">
+          <img class="portrait" src="images/regan-hines.jpg" alt="Regan Hines" width="600" height="600" loading="lazy">
           <h3>Regan Hines.</h3>
           <p>Regan builds the systems advice firms run on. Over the last two years he has moved a financial advice firm onto one connected set of tools, with AI doing the repetitive work and a record behind every step. Before that he spent fifteen years leading marketing, operations and business process work across the charity, retail and manufacturing sectors. He holds an MBA from the University of Canterbury and is trained in human-centred design.</p>
         </article>
@@ -217,6 +232,19 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var d = document.querySelector('.diagram');
+  if (!d) return;
+  if (!('IntersectionObserver' in window)) { d.classList.add('is-visible'); return; }
+  var o = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { d.classList.add('is-visible'); o.disconnect(); }
+    });
+  }, { threshold: 0.35 });
+  o.observe(d);
+})();
+</script>
+
 </body>
 </html>
-<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="e8f66742-04f0-4f40-b35d-8f43cffde5e6" data-app-host="app.netlify.com"></script>
