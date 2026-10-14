@@ -110,27 +110,27 @@
           </g>
           <g class="hub-group">
             <circle class="hub" cx="320" cy="320" r="70"/>
-            <text class="hub-text" x="320" y="334">CRM</text>
+            <text class="hub-text" x="320" y="334" data-cycle="CRM|Salesforce|HubSpot|Zoho">CRM</text>
           </g>
 
           <g class="tool tool-1">
             <rect class="tool-box" x="220" y="8" width="200" height="84" rx="4"/>
-            <text class="tool-name" x="320" y="46">Gmail</text>
+            <text class="tool-name" x="320" y="46" data-cycle="Gmail|Outlook">Gmail</text>
             <text class="tool-role" x="320" y="72">Email</text>
           </g>
           <g class="tool tool-2">
             <rect class="tool-box" x="440" y="278" width="196" height="84" rx="4"/>
-            <text class="tool-name" x="538" y="316">monday.com</text>
+            <text class="tool-name" x="538" y="316" data-cycle="monday.com|Asana|ClickUp|Trello">monday.com</text>
             <text class="tool-role" x="538" y="342">Tasks and workflow</text>
           </g>
           <g class="tool tool-3">
             <rect class="tool-box" x="220" y="548" width="200" height="84" rx="4"/>
-            <text class="tool-name" x="320" y="586">box.com</text>
+            <text class="tool-name" x="320" y="586" data-cycle="box.com|Dropbox|SharePoint|Google Drive">box.com</text>
             <text class="tool-role" x="320" y="612">Files</text>
           </g>
           <g class="tool tool-4">
             <rect class="tool-box" x="4" y="278" width="196" height="84" rx="4"/>
-            <text class="tool-name" x="102" y="316">Claude</text>
+            <text class="tool-name" x="102" y="316" data-cycle="Claude|ChatGPT|Copilot|Gemini">Claude</text>
             <text class="tool-role" x="102" y="342">AI</text>
           </g>
         </svg>
@@ -237,9 +237,35 @@
   var d = document.querySelector('.diagram');
   if (!d) return;
   if (!('IntersectionObserver' in window)) { d.classList.add('is-visible'); return; }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function startCycling() {
+    if (reduce) return;
+    var nodes = d.querySelectorAll('[data-cycle]');
+    Array.prototype.forEach.call(nodes, function (el, i) {
+      var names = el.getAttribute('data-cycle').split('|');
+      var idx = 0;
+      function fit(name) {
+        if (!el.classList.contains('hub-text')) return;
+        el.style.fontSize = name.length > 8 ? '22px' : name.length > 4 ? '27px' : '';
+      }
+      function next() {
+        idx = (idx + 1) % names.length;
+        el.style.opacity = '0';
+        setTimeout(function () {
+          el.textContent = names[idx];
+          fit(names[idx]);
+          el.style.opacity = '1';
+        }, 360);
+      }
+      setTimeout(function () {
+        next();
+        setInterval(next, 3600);
+      }, 2400 + i * 720);
+    });
+  }
   var o = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) { d.classList.add('is-visible'); o.disconnect(); }
+      if (e.isIntersecting) { d.classList.add('is-visible'); o.disconnect(); startCycling(); }
     });
   }, { threshold: 0.35 });
   o.observe(d);

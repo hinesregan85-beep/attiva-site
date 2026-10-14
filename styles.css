@@ -365,6 +365,11 @@ main > section:first-child {
   font-weight: 400;
   font-size: 18px;
 }
+
+.diagram .tool-name,
+.diagram .hub-text {
+  transition: opacity 0.36s ease;
+}
 /* Diagram animation. Static without JS or with reduced motion. */
 
 .diagram .flow {
